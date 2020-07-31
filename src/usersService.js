@@ -14,6 +14,10 @@ const usersService = {
   getUserPosts(knex, userId) {
     // check that the where arguments are formatted correctly
     return knex('posts').select('*').where({user_id: userId});
+  },
+
+  createPost(knex, userId, postData) {
+    return knex('posts').insert(postData).returning('*');
   }
 };
 

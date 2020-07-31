@@ -4,7 +4,11 @@ const postsService = require('./postsService.js');
 const postsRouter = express.Router();
 const jsonParser = express.json();
 
-// postsRouter.route('/')
+// postsRouter
+//   .route('/users/:userId/posts')
+//   .get((req, res) => {
+
+//   })
 
 module.exports = postsRouter;
 

@@ -1,7 +1,9 @@
-POST http://localhost:8000/users
-Content-Type: application/json
+# POST http://localhost:8000/users
+# Content-Type: application/json
 
-{
-  "username": "user11",
-  "password": "pass11"
-}
+# {
+#   "username": "user11",
+#   "password": "pass11"
+# }
+
+GET http://localhost:8000/users/1/posts

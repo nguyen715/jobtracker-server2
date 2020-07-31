@@ -18,11 +18,7 @@ app.use(morgan(morganOption));
 app.use(helmet());
 app.use(cors());
 
-// users routes
 app.use('/users', usersRouter);
-
-// 
-app.use('/posts', postsRouter);
 
 app.use(function errorHandler(error, req, res, next) {
   let response;

@@ -35,7 +35,7 @@ const postsService = {
   },
 
   deletePost(knex, postId) {
-
+    return knex('posts').where('id', postId).del().then(() => {});
   }
 }
 
