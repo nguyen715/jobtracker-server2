@@ -10,6 +10,14 @@ const jsonParser = express.json();
 
 //   })
 
+postsRouter
+  .route('/:postId')
+  .delete((req, res) => {
+    db = req.app.get('db');
+    postsService.deletePost(db, req.params.postId)
+      .then(res.send(200));
+  })
+
 module.exports = postsRouter;
 
 // CREATE TABLE posts (
