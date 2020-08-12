@@ -26,6 +26,10 @@ app.use(cors());
 app.use('/users', usersRouter);
 app.use('/posts', postsRouter);
 
+app.get('/hello', (req, res) => {
+  res.status(200).send('Hello World!');
+});
+
 app.use(function errorHandler(error, req, res, next) {
   let response;
   if(NODE_ENV === 'production') {
