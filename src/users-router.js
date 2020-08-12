@@ -68,9 +68,7 @@ usersRouter
             (user) => {
               res
                 .status(201)
-                .location(
-                  path.posix.join(`https://secure-caverns-29486.herokuapp.com/my-jobs`)
-                )
+                .location(`https://secure-caverns-29486.herokuapp.com/my-jobs`)
                 .json(user)
             }
           )

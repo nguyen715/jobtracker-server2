@@ -8,4 +8,12 @@
 
 # GET http://localhost:8000/users/1/posts
 
-GET https://secure-caverns-29486.herokuapp.com/hello
+# GET https://secure-caverns-29486.herokuapp.com/hello
+
+POST https://secure-caverns-29486.herokuapp.com/users
+Content-Type: application/json
+
+{
+  "username": "user2",
+  "password": "YIU324ty!1"
+}
