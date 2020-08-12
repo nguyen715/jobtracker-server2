@@ -68,7 +68,7 @@ usersRouter
             (user) => {
               res
                 .status(201)
-                .location(`https://secure-caverns-29486.herokuapp.com/my-jobs`)
+                .location(`https://secure-caverns-29486.herokuapp.com/jobs`)
                 .json(user)
             }
           )
