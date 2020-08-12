@@ -69,15 +69,16 @@ usersRouter
               res
                 .status(201)
                 .location(
-                  path.posix.join(`http://localhost:8000/my-jobs`)
-                )  
+                  path.posix.join(`https://secure-caverns-29486.herokuapp.com/my-jobs`)
+                )
+                .json(user)
             }
           )
         })
       })
 
-    usersService.createUser(db, req.body)
-    .then(data => res.status(201).json(data[0]));
+    // usersService.createUser(db, req.body)
+    // .then(data => res.status(201).json(data[0]));
 
     // res.status(201).json(usersService.createUser(db, req.body).then(data => data));
   });

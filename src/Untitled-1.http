@@ -6,4 +6,6 @@
 #   "password": "pass11"
 # }
 
-GET http://localhost:8000/users/1/posts
+# GET http://localhost:8000/users/1/posts
+
+GET https://secure-caverns-29486.herokuapp.com/hello
