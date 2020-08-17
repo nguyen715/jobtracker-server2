@@ -43,11 +43,14 @@ usersRouter
     const db = req.app.get('db');
     const { password, username } = req.body;
 
+    res.send(`hello. username is ${username}, password is ${password}. request is ${req}.`);
+
     for(const field of ['username', 'password'])
-      if (!req.body[field])
+      if (!req.body[field]) {
         return res.status(400).json({
           error: `Missing '${field}' in request body`
         });
+      };
 
     const passwordError = usersService.validatePassword(password);
     
