@@ -2,7 +2,6 @@ const express = require('express');
 const postsService = require('./posts-service.js');
 
 const postsRouter = express.Router();
-const jsonParser = express.json();
 
 // postsRouter
 //   .route('/users/:userId/posts')

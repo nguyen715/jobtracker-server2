@@ -4,7 +4,6 @@ const morgan = require('morgan');
 const cors = require('cors');
 const helmet = require('helmet');
 const { NODE_ENV } = require('./config');
-const authRouter = require('./auth/auth-router.js');
 const usersRouter = require('./users-router.js');
 const postsRouter = require('./posts-router.js');
 
@@ -22,7 +21,6 @@ app.use(cors());
 //   origin: 'https://job-tracker.vercel.app'
 // }));
 
-app.use('/auth', authRouter);
 app.use('/users', usersRouter);
 app.use('/posts', postsRouter);
 
