@@ -22,7 +22,7 @@ app.use(cors());
 //   origin: 'https://job-tracker.vercel.app'
 // }));
 
-// app.use('/auth', authRouter);
+app.use('/auth', authRouter);
 app.use('/users', usersRouter);
 app.use('/posts', postsRouter);
 

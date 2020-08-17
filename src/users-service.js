@@ -4,7 +4,10 @@ const bcrypt = require('bcryptjs');
 
 const usersService = {
   createUser (knex, userData) {
-    return knex('users').insert(userData).returning('*').then(([user]) => user);
+    return knex('users').insert(userData).returning('*').then(([user]) => {
+      console.log(user);
+      return user;
+    });
   },
 
   getUser(knex, userId) {
