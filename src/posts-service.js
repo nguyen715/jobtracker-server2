@@ -22,11 +22,15 @@ const postsService = {
   },
 
   getPostsByEmail(knex, email) {
-    return knex('posts').where('user_email', email);
+    return knex('posts').where('email', email);
+  },
+
+  getPostsByToken(knex, token) {
+    return knex('posts').where('token', token);
   },
 
   editPost(knex, id, postData) {
-
+    // Wouldn't that be nice...
   },
 
   deletePost(knex, postId) {
