@@ -9,7 +9,9 @@ postsRouter
     const db = req.app.get('db');
     postsService.deletePost(db, req.params.postId)
     .then(res.send(200));
-  })
+  });
+
+postsRouter  
   .route('/')
   .get((req, res) => {
     const db = req.app.get('db');
