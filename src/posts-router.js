@@ -15,7 +15,7 @@ postsRouter
   .route('/')
   .get((req, res) => {
     const db = req.app.get('db');
-    res.send(req.params.email);
+    res.send(`${req.params.email.length}`);
     if (req.params.email.length > 0) {
       const email = req.params.email;
       // postsService.getPostsByEmail(db, email)
