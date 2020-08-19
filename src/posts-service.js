@@ -22,7 +22,7 @@ const postsService = {
   },
 
   getPostsByEmail(knex, email) {
-    return knex('posts').where('email', email);
+    return knex('posts').where('email', email).then((data) => data);
   },
 
   getPostsByToken(knex, token) {
