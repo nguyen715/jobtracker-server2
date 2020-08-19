@@ -1,33 +1,28 @@
-/*
-postData should be a JS object, e.g.
-
-{
-  title: "Cool job listing",
-  location: "Los Angeles",
-  url: "https://www.indeed.com/really-cool-job",
-  notes: "I really like this job",
-  rating: 8,
-  userId: 75
-}
-*/
+const bcrypt = require('bcryptjs');
+const xss = require('xss');
 
 const postsService = {
-  createPost(knex, postData) {
-    return knex('posts').insert(postData).then(() => {});
-    // const { title, url, location, notes, rating, userId };
-    // knex('posts').insert({
-    //   title: title,
-    //   url: url,
-    //   location: location,
-    //   notes: notes,
-    //   rating: rating,
-    //   user_id: userId
-    
-    // does knex('posts').insert(postData) work??
+  hashEmail(email) {
+    return bcrypt.hash(email, 12);
   },
 
-  getPost(knex, postId) {
+  sanitizePost(postData) {
+    return {
+      title: xss(postData.title),
+      url: xss(postData.url),
+      location: xss(postData.location),
+      notes: xss(postData.notes),
+      rating: xss(postData.rating),
+      email: xss(postData.email),
+    }
+  },
 
+  insertPost(knex, postData) {
+    return knex('posts').insert(postData).then((data) => data);
+  },
+
+  getPostsByEmail(knex, email) {
+    return knex('posts').where('user_email', email);
   },
 
   editPost(knex, id, postData) {
@@ -40,13 +35,3 @@ const postsService = {
 }
 
 module.exports = postsService;
-
-/*
-create new post
-
-get post (to display in single post page?)
-
-edit post
-
-delete post
-*/
