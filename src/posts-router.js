@@ -17,8 +17,9 @@ postsRouter
     const db = req.app.get('db');
     if (req.params.email.length > 0) {
       const email = req.params.email;
-      postsService.getPostsByEmail(db, email)
-      .then(data => res.status(200).json(data));
+      res.send(req.params.email);
+      // postsService.getPostsByEmail(db, email)
+      // .then(data => res.status(200).json(data));
     }
     else if (req.params.token.length > 0) {
       const token = req.params.token;
