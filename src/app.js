@@ -25,7 +25,7 @@ app.use('/users', usersRouter);
 app.use('/posts', postsRouter);
 
 app.get('/token/:email', (req, res) => {
-  res.status(200).send(`${bcrypt.hash(req.params.email, 12)}`)
+  res.status(200).json({token:`${bcrypt.hash(req.params.email, 12)}`})
 });
 
 app.use(function errorHandler(error, req, res, next) {
