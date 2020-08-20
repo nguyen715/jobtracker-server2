@@ -12,7 +12,7 @@ postsRouter
   });
 
 postsRouter  
-  .route('/')
+  .route('/:email')
   .get((req, res) => {
     const db = req.app.get('db');
     res.status(200).send(`${req.params.email}`);
