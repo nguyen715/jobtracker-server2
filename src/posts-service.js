@@ -3,7 +3,7 @@ const xss = require('xss');
 
 const postsService = {
   hashEmail(email) {
-    return bcrypt.hash(email, 12);
+    return bcrypt.hash(email, 12);    
   },
 
   sanitizePost(postData) {
