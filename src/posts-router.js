@@ -23,14 +23,6 @@ postsRouter
     }
     else
       res.status(400).send('Valid email is required.');
-  })
-  .post(express.json(), (req, res) => {
-    const db = req.app.get('db');
-    const sanitizedPost = postsService.sanitizePost(req.body);
-    sanitizedPost.token = postsService.hashEmail(req.params.email);
-
-    postsService.insertPost(db, sanitizedPost)
-    .then(data => res.status(201).json(data));
   });
   
 postsRouter  
@@ -45,5 +37,16 @@ postsRouter
     else
       res.status(400).send('Valid token is required.');
   })
+
+  postsRouter
+    .route('/')
+    .post(express.json(), (req, res) => {
+      const db = req.app.get('db');
+      const sanitizedPost = postsService.sanitizePost(req.body);
+      sanitizedPost.token = postsService.hashEmail(req.params.email);
+  
+      postsService.insertPost(db, sanitizedPost)
+      .then(data => res.status(201).json(data));
+    });
 
 module.exports = postsRouter;
