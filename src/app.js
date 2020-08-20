@@ -3,6 +3,7 @@ const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
 const helmet = require('helmet');
+const bcrypt = require('bcryptjs');
 const { NODE_ENV } = require('./config');
 const usersRouter = require('./users-router.js');
 const postsRouter = require('./posts-router.js');
@@ -23,8 +24,8 @@ app.use(cors());
 app.use('/users', usersRouter);
 app.use('/posts', postsRouter);
 
-app.get('/hello', (req, res) => {
-  res.status(200).send('Hello World!');
+app.get('/token/:email', (req, res) => {
+  res.status(200).send(`${bcrypt.hash(req.params.email, 12)}`)
 });
 
 app.use(function errorHandler(error, req, res, next) {
