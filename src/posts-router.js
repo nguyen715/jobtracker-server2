@@ -43,7 +43,11 @@ postsRouter
     .post(express.json(), (req, res) => {
       const db = req.app.get('db');
       const sanitizedPost = postsService.sanitizePost(req.body);
-      sanitizedPost.token = postsService.hashEmail(req.body.email);
+
+      postsService.hashEmail(req.body.email)
+      .then(token => {
+        sanitizedPost.token = token;
+      })
   
       postsService.insertPost(db, sanitizedPost)
       .then(data => res.status(201).json(data));
