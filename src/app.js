@@ -16,10 +16,10 @@ const morganOption = (NODE_ENV === 'production')
 
 app.use(morgan(morganOption));
 app.use(helmet());
-app.use(cors());
-// app.use(cors({
-//   origin: 'https://job-tracker.vercel.app'
-// }));
+// app.use(cors());
+app.use(cors({
+  origin: 'https://jobtracker-rouge.vercel.app/'
+}));
 
 app.use('/users', usersRouter);
 app.use('/posts', postsRouter);
