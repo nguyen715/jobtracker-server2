@@ -24,11 +24,8 @@ app.use(cors());
 app.use('/users', usersRouter);
 app.use('/posts', postsRouter);
 
-app.get('/token/:email', (req, res) => {
-  hash(req.params.email)
-  .then(token => {
-    res.status(200).json({token: token})
-  })
+app.get('/token/:email', (req, res) => {  
+    res.status(200).json({token: hash(req.params.email)})
 });
 
 app.use(function errorHandler(error, req, res, next) {
