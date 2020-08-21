@@ -1,5 +1,6 @@
 const express = require('express');
 const postsService = require('./posts-service.js');
+const hash = require('object-hash');
 
 const postsRouter = express.Router();
 
@@ -48,7 +49,7 @@ postsRouter
       // .then(token => {
       //   sanitizedPost.token = token;
       // })
-      sanitizedPost.token = sanitizedPost.email;
+      sanitizedPost.token = hash(sanitizedPost.email);
   
       postsService.insertPost(db, sanitizedPost)
       .then(data => res.status(201).json(data));
