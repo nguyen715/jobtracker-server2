@@ -42,7 +42,7 @@ postsRouter
     .route('/')
     .post(express.json(), (req, res) => {
       const db = req.app.get('db');
-      const sanitizedPost = postsService.sanitizePost(req.body);
+      let sanitizedPost = postsService.sanitizePost(req.body);
 
       postsService.hashEmail(req.body.email)
       .then(token => {
