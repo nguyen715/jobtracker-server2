@@ -44,10 +44,11 @@ postsRouter
       const db = req.app.get('db');
       let sanitizedPost = postsService.sanitizePost(req.body);
 
-      postsService.hashEmail(req.body.email)
-      .then(token => {
-        sanitizedPost.token = token;
-      })
+      // postsService.hashEmail(req.body.email)
+      // .then(token => {
+      //   sanitizedPost.token = token;
+      // })
+      sanitizedPost.token = sanitizedPost.email;
   
       postsService.insertPost(db, sanitizedPost)
       .then(data => res.status(201).json(data));
