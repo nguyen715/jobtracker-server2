@@ -1,10 +1,6 @@
-const bcrypt = require('bcryptjs');
 const xss = require('xss');
 
 const postsService = {
-  hashEmail(email) {
-    return bcrypt.hash(email, 12);    
-  },
 
   sanitizePost(postData) {
     return {
@@ -27,10 +23,6 @@ const postsService = {
 
   getPostsByToken(knex, token) {
     return knex('posts').where('token', token);
-  },
-
-  editPost(knex, id, postData) {
-    // Wouldn't that be nice...
   },
 
   deletePost(knex, postId) {

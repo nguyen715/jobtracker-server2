@@ -5,7 +5,6 @@ const cors = require('cors');
 const helmet = require('helmet');
 const hash = require('object-hash');
 const { NODE_ENV } = require('./config');
-const usersRouter = require('./users-router.js');
 const postsRouter = require('./posts-router.js');
 
 const app = express();
@@ -21,7 +20,6 @@ app.use(cors());
 //   origin: 'https://jobtracker-rouge.vercel.app/'
 // }));
 
-app.use('/users', usersRouter);
 app.use('/posts', postsRouter);
 
 app.get('/token/:email', (req, res) => {  

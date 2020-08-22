@@ -45,10 +45,6 @@ postsRouter
       const db = req.app.get('db');
       let sanitizedPost = postsService.sanitizePost(req.body);
 
-      // postsService.hashEmail(req.body.email)
-      // .then(token => {
-      //   sanitizedPost.token = token;
-      // })
       sanitizedPost.token = hash(sanitizedPost.email);
   
       postsService.insertPost(db, sanitizedPost)
