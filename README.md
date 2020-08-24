@@ -4,17 +4,6 @@ Jobtracker
 ## Link to live app
 https://jobtracker-rouge.vercel.app
 
-## Screenshots
-
-#### Landing Page
-![Landing Page](/src/images/screenshots/jobtracker-landing-page.jpg)
-
-#### Main Page
-![Main Page](/src/images/screenshots/jobtracker-main-page.jpg)
-
-#### Form Page
-![Form Page](/src/images/screenshots/jobtracker-form-page.jpg)
-
 ## Summary of app
 
 This app allows users to keep track of job listings that they find when they are searching for jobs. From the landing page, the user enters their email address and is taken inside the app to a page showing job listing information that's been connected to that email address. The user can add new posts and delete existing posts.
