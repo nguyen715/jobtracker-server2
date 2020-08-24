@@ -1,3 +1,76 @@
+## Name of app
+Jobtracker
+
+## Link to live app
+https://jobtracker-rouge.vercel.app
+
+## Screenshots
+
+#### Landing Page
+![Landing Page](/src/images/screenshots/jobtracker-landing-page.jpg)
+
+#### Main Page
+![Main Page](/src/images/screenshots/jobtracker-main-page.jpg)
+
+#### Form Page
+![Form Page](/src/images/screenshots/jobtracker-form-page.jpg)
+
+## Summary of app
+
+This app allows users to keep track of job listings that they find when they are searching for jobs. From the landing page, the user enters their email address and is taken inside the app to a page showing job listing information that's been connected to that email address. The user can add new posts and delete existing posts.
+
+There is also a special shareable link displayed on the page that the user can copy and give to others if he/she wants to share the list of job posts.
+
+## Technologies used
+HTML5, CSS3, JS(ES6)
+
+React (including React Router, and React hooks), create-react-app, Jest, Vercel, fetch API
+
+Node.js, Express.js, postgreSQL, knex.js, Mocha, Chai, supertest, Heroku
+
+## API documentation
+
+https://protected-stream-86705.herokuapp.com/posts/email/:email
+
+GET request returning JSON array of all posts belonging to specified email
+
+======
+
+https://protected-stream-86705.herokuapp.com/posts/token/:token
+
+GET request returning JSON array of all posts belonging to specified token
+
+======
+
+https://protected-stream-86705.herokuapp.com/token/:email
+
+GET request returning JSON object {"token": "tokenValue"} where the token represents a hashed version of the specified email
+
+======
+
+https://protected-stream-86705.herokuapp.com/posts
+
+POST request to create new post; body of post should be JSON object formatted as such:
+
+{
+  "title": "title value",
+  "url": "url string",
+  "location": "location value",
+  "notes": "notes text",
+  "rating": "rating integer"
+}
+
+======
+
+https://protected-stream-86705.herokuapp.com/posts/:postId
+
+DELETE request to delete post with specified id
+
+
+
+
+==========================
+
 # Express Boilerplate!
 
 This is a boilerplate project used for starting new projects!
