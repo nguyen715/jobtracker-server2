@@ -1,6 +1,8 @@
 const knex = require('knex');
 const app = require('../src/app');
 const supertest = require('supertest');
+const hash = require('object-hash');
+
 
 describe('Posts endpoints', () => {
   let db;
@@ -17,19 +19,69 @@ describe('Posts endpoints', () => {
   after('Destroy the connection', () => db.destroy());
 
   afterEach('Truncate the tables', () => {
-    return db.raw('TRUNCATE users, posts RESTART IDENTITY CASCADE');
+    return db.raw('TRUNCATE posts RESTART IDENTITY CASCADE');
   })
 
   beforeEach('Seed the tables', () => {
-    return db('users').insert({username: 'Miki', password: 'mouse'});
+    const token1 = hash('miki@miki.com');
+    const token2 = hash('wesley@wesley.com');
+
+    return db('posts').insert(
+      [
+        {
+          title: 'test title',
+          url: 'https://www.testurl.com',
+          location: 'Columbus',
+          email: 'miki@miki.com',
+          token: token1
+        },
+        {
+          title: 'test title 2',
+          url: 'https://www.testurl2.com',
+          location: 'Miami',
+          email: 'wesley@wesley.com',
+          token: token2
+        }
+      ])
   })
 
-  it('gets user with id==1', () => {
-    const data = {id: 1, username: 'Miki', password: 'mouse'};
-
-    return supertest(app)
-    .get('/users/1')
-    .expect(200, data)
+  describe('GET all posts belonging to email miki@miki.com', () => {
+    it('returns the first post with test title, testurl, etc, but not the second post', () => {
+      return supertest(app)
+             .get(`/posts/email/miki@miki.com`)
+             .expect(200)
+    })
   })
 
+  describe('DELETE post with postId of 1', () => {
+    it('returns the database, showing the first post deleted and second post still there', () => {
+      return supertest(app)
+             .delete('/posts/1')
+             .expect(200)
+      
+    })
+  })
+
+  describe('POST new post to database', () => {
+    it('returns the database with new post added', () => {
+      return supertest(app)
+             .post(`/posts/`)
+             .send({
+               title: "testtitle",
+               url: "testurl@testurl.com",
+               email: "wesleymiki@wesleymiki.com"
+             })
+             .expect(201)
+      
+    })
+  })
+
+  describe('GET token belonging to email miki@miki.com', () => {
+    it('returns the token belonging to miki@miki.com', () => {
+      return supertest(app)
+             .get(`/token/miki@miki.com`)
+             .expect(200)
+      
+    })
+  })
 })
